@@ -18,6 +18,8 @@ import numpy as np
 sys.path.insert(0, os.path.realpath('../'))
 
 from FEMlib.mesh import *
+from FEMlib.plotSol import *
+
 
 np.random.seed(10)
 
@@ -55,14 +57,4 @@ gmsh.finalize()
 
 mesh = Mesh()
 mesh.GmshToMesh(SavedFile)
-
-x= [pt.coord[0] for pt in mesh.points]
-y= [pt.coord[1] for pt in mesh.points]
-connectivity=[]
-for tri in mesh.listElesType[0]:
-    connectivity.append([ p.id for p in tri.p])
-plt.triplot(x, y, connectivity, 'k-', lw=1.0)  
-ax = plt.gca()
-ax.set_aspect('equal', adjustable='box')
-plt.show()
-
+plotMesh(mesh)
