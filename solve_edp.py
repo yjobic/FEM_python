@@ -18,10 +18,15 @@ from FEMlib.plotSol import *
 from FEMlib.errors import *
 
 def g(x,y):
-    return np.sin(np.pi*x)*np.sin(np.pi*y)
+    #
+    # A REMPLIR
+    #
+    
 def f(x,y):
-    return g(x,y)*(2.*np.pi*np.pi)
-
+    #
+    # A REMPLIR
+    #
+    
 def printTemps(temps):
     if temps>3600: 
         return '{:2.3f}'.format(temps/3600)+' h'
@@ -41,7 +46,7 @@ start = time.time()
 #load the mesh
 mesh = Mesh()
 startloc = time.time()
-MeshFileName="Meshes/square_T2_1.msh"
+MeshFileName="Meshes/square_T1_2.msh"
 mesh.GmshToMesh(MeshFileName)
 endloc = time.time(); elapsed = endloc - startloc
 print('Temps GmshToMesh : '+ printTemps(elapsed))
