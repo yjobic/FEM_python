@@ -4,6 +4,7 @@
 """
 
 from FEMlib.mesh import *
+from numpy.linalg import cond
 
 
 def rmsError(Sol, SolEx):
@@ -42,3 +43,6 @@ def L2error(mesh, Sol, FuncSolEx):
         for ele in elelist:
             errL2+=errorL2Elem(ele,quad,basis,Sol,FuncSolEx)
     return np.sqrt(errL2)
+
+def GetConditionNumber(A):
+    return cond(A.todense())
