@@ -57,7 +57,7 @@ class QuadratureQ:
         self.ordre=ordre
         # assert ordre<=5 and ordre>1,"Attention ordre doit etre en 2 ,3 ou 5"
         # assert ordre!=4,"Attention ordre doit etre en 2 ,3 ou 5"
-        assert ordre==3,"Attention ordre doit etre egal a 3"
+        assert ordre==3 or ordre==5,"Attention ordre doit etre egal a 3 ou 5"
         assert dim==2, "Attention on ne gere que dim=2"
         #match instruction only valid for python > 3.10
         #Gauss quadrature, dhatt et touzot p 293
@@ -72,15 +72,13 @@ class QuadratureQ:
             self.coords=[[a,a],[-a,a],[a,-a],[-a,-a]]
             w=np.double(1.)
             self.wp=[w,w,w,w]
-        # if ordre==5:
-        #     self.Npts=7
-        #     a=np.sqrt(14./15)
-        #     b=np.sqrt(3./5)          
-        #     self.coords=[[0,0],[0,a],[0,-a],[-b,-b],[b,-b],[-b,b],[b,b]]
-        #     w1=np.double(8./7)
-        #     w2=np.double(20./63)
-        #     w3=np.double(20./36)
-        #     self.wp=[w1,w2,w2,w3,w3,w3,w3]
+        if ordre==5:
+            self.Npts=9
+            a=np.double(np.sqrt(3./5))
+            pts=[-a,np.double(0),a]
+            w=[np.double(5./9),np.double(8./9),np.double(5./9)]
+            self.coords=[[pts[i],pts[j]] for j in range(3) for i in range(3)]
+            self.wp=[w[i]*w[j] for j in range(3) for i in range(3)]
     def printQuad(self):
         print("dim : ",self.dim)
         print("Ordre : ",self.ordre)
