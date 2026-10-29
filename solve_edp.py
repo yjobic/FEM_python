@@ -52,7 +52,7 @@ start = time.time()
 #load the mesh
 mesh = Mesh()
 startloc = time.time()
-MeshFileName="Meshes/square_T1_2.msh"
+MeshFileName="Meshes/square_T_1_o2.msh"
 mesh.GmshToMesh(MeshFileName)
 endloc = time.time(); elapsed = endloc - startloc
 print('Temps GmshToMesh : '+ printTemps(elapsed))
