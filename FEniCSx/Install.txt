@@ -1,0 +1,12 @@
+In a Terminal MATE, type :
+Anaconda3
+conda init
+
+Close it.  Reopen it. You should something like :
+(base) jobic@xxx:~$
+
+Then install Fenics :
+conda create --name fenics
+conda activate fenics
+conda install -c conda-forge fenics-dolfinx mpich pyvista
+
