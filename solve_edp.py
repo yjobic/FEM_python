@@ -36,11 +36,17 @@ def printTemps(temps):
         return '{:2.3f}'.format(temps)+' s'
 
 outPlot=0
-if  outPlot :
-    get_ipython().run_line_magic('matplotlib', 'qt')
-else :
-    get_ipython().run_line_magic('matplotlib', 'inline')
-
+try: # Vérification sécurisée de l'environnement IPython
+    from IPython import get_ipython
+    ipython = get_ipython()
+    if ipython is not None:
+        if outPlot:
+            ipython.run_line_magic('matplotlib', 'qt')
+        else:
+            ipython.run_line_magic('matplotlib', 'inline')
+except ImportError:
+    pass  # IPython n'est pas installé ou est indisponible
+    
 start = time.time()
 
 #load the mesh
