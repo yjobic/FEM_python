@@ -26,6 +26,7 @@ def errorL2Elem(ele,quad,base,Sol,FuncSolEx):
     SolInterpole=interpoleSolAtGaussPoints(ele,quad,base,Sol)
     x,y=computeCoordPhyFromRef(ele, base, quad)      
     for k in range(quad.Npts):
+        Jac.fill(0)
         xi =quad.coords[k][0]
         eta=quad.coords[k][1]
         #Jacobian is not constant, we have to evalute it at gauss point
