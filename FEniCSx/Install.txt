@@ -1,9 +1,9 @@
-In a Terminal MATE, type :
+In a "Terminal MATE", type :
 Anaconda3
 conda init
 
 Close it.  Reopen it. You should something like :
-(base) jobic@xxx:~$
+(base) name@xxx:~$
 
 Then install Fenics :
 conda create --name fenics
