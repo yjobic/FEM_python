@@ -23,7 +23,7 @@ from FEMlib.plotSol import *
 
 np.random.seed(10)
 
-OpenFile = "square_T1_2.msh"
+OpenFile = "square_T_1_o2.msh"
 SavedFile = "square_T1_2_displaced.msh"
 Amplitude = 0.07
 
