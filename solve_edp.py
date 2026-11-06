@@ -7,6 +7,7 @@ from scipy.sparse.linalg import spsolve
 import matplotlib.pyplot  as plt
 import numpy as np
 import time
+import sys
 
 
 #local import
@@ -19,13 +20,29 @@ from FEMlib.errors import *
 
 def g(x,y):
     #
-    #[A REMPLIR]
+    #[A REMPLIR] : solution exacte, utilisée pour les conditions de Dirichlet
     #
+    return None  # à remplacer
+
 def f(x,y):
     #
-    #[A REMPLIR]
+    #[A REMPLIR] : terme source (second membre)
     #
-    
+    return None  # à remplacer
+
+# Vérification que g et f ont bien été complétées avant de lancer le calcul
+fonctions_a_remplir = [nom for nom, fct in (('g', g), ('f', f))
+                       if fct(0.5, 0.5) is None]
+if fonctions_a_remplir:
+    print('\n' + '*'*70)
+    print(' ERREUR : fonction(s) à compléter : ' + ', '.join(fonctions_a_remplir))
+    print(' Remplissez les parties [A REMPLIR] au début de solve_edp.py :')
+    print('   - g(x,y) : la solution exacte (conditions de Dirichlet)')
+    print('   - f(x,y) : le terme source (second membre)')
+    print(' puis relancez le programme.')
+    print('*'*70 + '\n')
+    sys.exit(1)
+
 def printTemps(temps):
     if temps>3600: 
         return '{:2.3f}'.format(temps/3600)+' h'
