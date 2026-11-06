@@ -108,8 +108,8 @@ def createMesh_square(filename, basesize, elementOrder):
 
 
 order = 2
-basesize = 0.5/2/2/2/2
-MeshFileName="square_T_5_o"+str(order)
+basesize = 0.5
+MeshFileName="square_T_1_o"+str(order)
 createMesh_triangle(MeshFileName,basesize,order)
 
 mesh = Mesh()
@@ -118,7 +118,7 @@ mesh.GmshToMesh(MeshFileName+".msh")
 plotMesh(mesh)
 
 
-MeshFileName="square_Q_5_o"+str(order)
+MeshFileName="square_Q_1_o"+str(order)
 createMesh_square(MeshFileName,basesize,order)
 
 mesh = Mesh()

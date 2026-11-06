@@ -152,14 +152,16 @@ def quadsOrdre2_to_QuadsOrdre1(quads_o2):
 
         
 # plots a finite element mesh
-def plot_fem_mesh(nodes_x, nodes_y, elements):
+def plot_fem_mesh(nodes_x, nodes_y, elements, **kwargs):
     for element in elements:
         x = [nodes_x[element[i]] for i in range(len(element))]
         y = [nodes_y[element[i]] for i in range(len(element))]
-        plt.fill(x, y, edgecolor='black', fill=False)
+        style = {'edgecolor': 'black', 'fill': False}
+        style.update(kwargs)
+        plt.fill(x, y, **style)
 
 
-def plotMesh(mesh):
+def plotMesh(mesh, show=True, **kwargs):
 
     #Coordonnees des points
     x= [pt.coord[0] for pt in mesh.points]
@@ -204,11 +206,12 @@ def plotMesh(mesh):
     triangulation = tri.Triangulation(x, y, elements_all_tris)
 
     # plot the finite element mesh
-    plot_fem_mesh(x, y, elements)
+    plot_fem_mesh(x, y, elements, **kwargs)
 
     # show
     plt.axis('equal')
-    plt.show()
+    if show:
+        plt.show()
 
 def plotSol(mesh, X, printMesh):
 

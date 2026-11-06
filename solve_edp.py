@@ -18,10 +18,13 @@ from FEMlib.plotSol import *
 from FEMlib.errors import *
 
 def g(x,y):
-    return np.sin(np.pi*x)*np.sin(np.pi*y)
-    
+    #
+    #[A REMPLIR]
+    #
 def f(x,y):
-    return 2*np.pi**2*g(x,y)
+    #
+    #[A REMPLIR]
+    #
     
 def printTemps(temps):
     if temps>3600: 
